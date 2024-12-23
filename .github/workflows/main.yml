@@ -61,9 +61,6 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Deploy to Render
+            - name: Deploy to Render
         run: |
-          curl -X POST `
-             "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}" `
-             "Content-Type: application/json" `
-            https://api.render.com/v1/services/${{ secrets.RENDER_SERVICE_ID }}/deploys
+          curl -X POST -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}" -H "Content-Type: application/json" https://api.render.com/v1/services/${{ secrets.RENDER_SERVICE_ID }}/deploys
