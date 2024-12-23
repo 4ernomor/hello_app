@@ -38,19 +38,8 @@ jobs:
         run: python -m unittest tests/test_main.py
 
   deploy:
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Set up Python 3.11
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
-
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-
-      - name: Output greeting
-        run: python src/main.py
+    run: |
+        curl -X POST \
+        -H "Authorization: Bearer ${{ <rnd_0YNBUAhOzbxYBTJCRqyCc8kVFus0> }}" \
+        -H "Content-Type: application/json" \
+        https://api.render.com/v1/services/<srv-ctkq2ppopnds7381bgc0>/deploys
